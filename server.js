@@ -35,21 +35,27 @@ app.use((req, res, next) => {
 });
 
 app.get('/login', (req, res)=>{
-	res.render("login.ejs", {err: "", feedback: ""});
+	res.render("login.ejs", {err: ""});
 });
 
 app.get('/signup', (req, res)=>{
-	res.render("signup.ejs", {err: "", feedback: ""});
+	res.render("signup.ejs", {err: ""});
 });
 
 app.get('/', (req, res)=>{
-	res.render("index.ejs",{err: "", feedback: ""});
+	if(!req.session.username) {
+		return res.redirect('/login');
+	}
+	res.render("index.ejs",{err: ""});
 });
 
 app.post('/signup', (req, res)=>{
 	const data = req.body;
-	if(!data.email || !data.username || !data.password) {
-		return res.render('signup.ejs', {err: "All fields required", feedback: ""});
+	if(!data.email || !data.username || !data.password || !data.password2) {
+		return res.render('signup.ejs', {err: "All fields required"});
+	}
+	else if(data.password != data.password2) {
+		return res.render('signup.ejs', {err: "Passwords don't match."});
 	}
 
 	pool.query(
@@ -57,7 +63,7 @@ app.post('/signup', (req, res)=>{
 		[data.email, data.username],
 		(err, response) => {
 			if(err) {
-				return res.render('signup.ejs', {err: err.message, feedback: ""});
+				return res.render('signup.ejs', {err: err.message});
 			}
 
 			if(response.length > 0) {
@@ -65,23 +71,24 @@ app.post('/signup', (req, res)=>{
 				const userExists = response.some(user => user.Username === data.username);
 
 				if(emailExists) {
-					return res.render('signup.ejs', {err: "User with that email already exists.", feedback: ""});
+					return res.render('signup.ejs', {err: "User with that email already exists."});
 				} 
 				else if (userExists) {
-					return res.render('signup.ejs', {err: "User with that username already exists.", feedback: ""});
+					return res.render('signup.ejs', {err: "User with that username already exists."});
 				}
+
 			} else {
 				const saltRounds = 10;
 				bcrypt.hash(data.password, saltRounds, (err, hashedPassword) => {
 					if(err) {
-						return res.render('signup.ejs', {err: err.message, feedback: ""});
+						return res.render('signup.ejs', {err: err.message});
 					} else {
 						pool.query(
 							`INSERT INTO User (Username, Email, Password) VALUES (?, ?, ?)`,
 							[data.username, data.email, hashedPassword],
 							(err, response) => {
 								if(err) {
-									return res.render('signup.ejs', {err: err.message, feedback: ""});
+									return res.render('signup.ejs', {err: err.message});
 								} else {
 									res.redirect('/login');
 								}
@@ -99,14 +106,14 @@ app.post('/login', (req, res)=> {
 	pool.query (
 		`SELECT * FROM User WHERE Username = ?`, [data.username], (err, response)=>{
 			if(err) {
-				return res.render("login.ejs", {err: err.message, feedback: ""});
+				return res.render("login.ejs", {err: err.message});
 			}
 			
 			if (response.length > 0) {
                 const user = response[0];
                 bcrypt.compare(data.password, user.Password, (err, isMatch) => {
                     if (err) {
-                        return res.render("login.ejs", { err: err.message, feedback: "" });
+                        return res.render("login.ejs", { err: err.message});
                     }
     
                     if (isMatch) {
@@ -116,12 +123,12 @@ app.post('/login', (req, res)=> {
     
                         return res.redirect('/');
                     } else {
-                        res.render("login.ejs", { err: "Incorrect username or password", feedback: "" });
+                        res.render("login.ejs", { err: "Incorrect username or password"});
                     }
                 });
     
             } else {
-                res.render("login.ejs", { err: "Incorrect username or password", feedback: "" });
+                res.render("login.ejs", { err: "Incorrect username or password"});
             }
 		}
 	);
