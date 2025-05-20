@@ -91,6 +91,8 @@ input {
     border: 1px solid;
     padding-left: 10px;
     outline: none;
+    border: 1px solid;
+    border-color: var(--primary-text);
 }
 
 input:focus {
@@ -117,6 +119,5 @@ button[type="submit"] {
 button[type="submit"]:hover {
     cursor: pointer;
     background-color: var(--dark-primary);
+    transition: 0.2s;
 }
-
-/*Home page styling*/
