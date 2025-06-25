@@ -109,7 +109,7 @@ input:focus {
 button[type="submit"] {
     width: 40%;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
     background-color: var(--primary);
     border: none;
     color: var(--primary-bg);
@@ -120,4 +120,104 @@ button[type="submit"]:hover {
     cursor: pointer;
     background-color: var(--dark-primary);
     transition: 0.2s;
+}
+
+/*Responsive design*/
+@media only screen and (max-width: 600px) {
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: "Noto Sans", sans-serif;
+        font-weight: 400;
+        background-color: var(--primary-bg);
+       
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        margin-top: 50px;
+    }
+
+    .login-background {
+        background-image: url(/images/login-img.svg);
+    }
+
+    .signup-background {
+        background-image: url(/images/signup-img.svg);
+    }
+
+    .login-background, .signup-background {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 200px auto;
+        width: 100%;
+        height: 200px;
+    }
+
+    .login-container {
+        width: 100%;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-container h1 {
+        font-size: 25px;
+        font-family: "Poppins";
+        font-weight: 700;
+        color: var(--primary);
+    }
+
+    .login-container a {
+        font-size: 15px;
+        text-decoration: none;
+        font-family: "Poppins";
+        font-weight: 700;
+        color: var(--primary);
+    }
+
+    .login-container a:hover {
+        text-decoration: underline;
+    }
+
+    .form-container {
+        width: 90%;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column; 
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    input {
+        height: 35px;
+        border-radius: 10px;
+        border: 1px solid;
+        padding-left: 10px;
+        outline: none;
+        border: 1px solid;
+        border-color: var(--primary-text);
+    }
+
+    input:focus {
+        background-color: var(--divider-text);
+        border: 2px solid;
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
