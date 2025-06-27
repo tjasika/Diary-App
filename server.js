@@ -7,6 +7,8 @@ const mysql = require('mysql2');
 const path = require('path');
 const bcrypt = require('bcrypt');
 
+const { format } = require('date-fns');
+
 const pool = mysql.createPool({
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
@@ -34,6 +36,12 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use((req, res, next) => {
+	const formatted = format(new Date(), "EEEE, MMMM do yyyy");
+	res.locals.currentDate = formatted;
+	next();
+})
+
 app.get('/login', (req, res)=>{
 	res.render("login.ejs", {err: ""});
 });
@@ -43,9 +51,9 @@ app.get('/signup', (req, res)=>{
 });
 
 app.get('/', (req, res)=>{
-	if(!req.session.username) {
+	/*if(!req.session.username) {
 		return res.redirect('/login');
-	}
+	}*/
 	res.render("index.ejs",{err: ""});
 });
 
