@@ -42,6 +42,7 @@ app.use((req, res, next) => {
 	next();
 })
 
+//GET handlers
 app.get('/login', (req, res)=>{
 	res.render("login.ejs", {err: ""});
 });
@@ -71,6 +72,8 @@ app.get('/newentry', (req, res)=>{
 	res.render("newentry.ejs",{err: ""});
 });
 
+
+//POST handlers
 app.post('/signup', (req, res)=>{
 	const data = req.body;
 	if(!data.email || !data.username || !data.password || !data.password2) {
@@ -100,14 +103,15 @@ app.post('/signup', (req, res)=>{
 				}
 
 			} else {
+				const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
 				const saltRounds = 10;
 				bcrypt.hash(data.password, saltRounds, (err, hashedPassword) => {
 					if(err) {
 						return res.render('signup.ejs', {err: err.message});
 					} else {
 						pool.query(
-							`INSERT INTO User (Username, Email, Password) VALUES (?, ?, ?)`,
-							[data.username, data.email, hashedPassword],
+							`INSERT INTO User (Username, Email, Password, first_used, last_used) VALUES (?, ?, ?, ?, ?)`,
+							[data.username, data.email, hashedPassword, now, now],
 							(err, response) => {
 								if(err) {
 									return res.render('signup.ejs', {err: err.message});
@@ -139,11 +143,18 @@ app.post('/login', (req, res)=> {
                     }
     
                     if (isMatch) {
+						const newDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
                         req.session.loggedin = true;
                         req.session.username = user.Username;
-                        req.session.userId = user.ID;
-    
-                        return res.redirect('/');
+                        req.session.userId = user.Id;
+						pool.query(
+							`UPDATE User SET last_used = ? WHERE Id = ? `, [newDate, user.Id], (updateErr) => {
+								if(updateErr) {
+									console.error(updateErr);
+								}
+								return res.redirect('/');
+							}
+						);
                     } else {
                         res.render("login.ejs", { err: "Incorrect username or password"});
                     }
