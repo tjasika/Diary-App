@@ -62,7 +62,20 @@ app.get('/entries', (req, res)=>{
 	/*if(!req.session.username) {
 		return res.redirect('/login');
 	}*/
-	res.render("entries.ejs",{err: ""});
+	const userId = req.session.userId;
+	pool.query(
+		`SELECT entry.title, entry.date, entry.content, user.username
+		FROM entry
+		JOIN user ON entry.User_Id = user.id
+		ORDER BY entry.date DESC`, 
+		[userId], (err, results) => {
+			if(err) {
+				console.error('Error fetching entries:', err.message);
+				return res.render('entries.ejs', { entries: [], err: err.message });
+			}
+			return res.render('entries.ejs',{entries: results, err: ""});
+		}
+	)
 });
 
 app.get('/newentry', (req, res)=>{

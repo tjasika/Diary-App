@@ -29,7 +29,17 @@
             <!-- Main Content -->
             <div class="main-content">
                 <div class="entries-container">
-                    
+                    <% if (entries && entries.length > 0) { %>  <!-- Check if there are entries -->
+                    <% entries.forEach(entry => { %>
+                    <div class="post">
+                        <h2 class="post-title"><%= entry.title %></h2>
+                        <p><%= entry.content %></p>
+                        <p><em>By <%= entry.username %> on <%= new Date(entry.date).toLocaleString() %></em></p>
+                    </div>
+                    <% }) %>
+                <% } else { %>
+                    <p>No entries available.</p>
+                <% } %>
                 </div>
             </div>
         </div>
