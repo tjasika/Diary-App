@@ -167,6 +167,11 @@ app.post('/login', (req, res)=> {
 	);
 });
 
+app.post('/newentry', (req, res) => {
+
+});
+
+//Log-out
 app.get("/logout", (req, res) => {
     req.session.destroy((err) => {
         if (err) {

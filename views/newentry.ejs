@@ -6,7 +6,7 @@
         <title>New Entry</title>
         <link rel="stylesheet" href="/css/style2.css">
     </head>
-    <body>
+    <body class="form-body">
         <div class="container">
         <!-- Sidebar -->
             <div class="sidebar">
@@ -27,8 +27,23 @@
             </div>
 
             <!-- Main Content -->
-            <div class="main-content">
+            <div class="main-content new-entry">
+                <div class="form-container">
+                    <h2>Add a new entry</h2>
+                    <form id="new-entry-form" action="/newentry" method="POST">
+                        <label for="entry-title">Add a title:</label>
+                        <input type="text" id="entry-title" name="title" required>
+
+                        <label for="entry-content" >What are you thinking about?</label>
+                        <textarea id="entry-content" name="content" required></textarea>
+
+                        <div class="button-container">
+                            <button type="submit" id="add-btn">Add</button>
+                        </div>
+                    </form>
+                </div>
                 
+                <div class="image-container"></div>
             </div>
         </div>
     </body>

@@ -103,7 +103,6 @@ input {
     padding-left: 10px;
     outline: none;
     border: 1.5px solid #afafaf;
-    
     background-color: #f5f5f5;
 }
 
@@ -209,21 +208,6 @@ button[type="submit"]:hover {
         justify-content: center;
         gap: 10px;
         width: 100%;
-    }
-
-    input {
-        height: 35px;
-        border-radius: 10px;
-        border: 1px solid;
-        padding-left: 10px;
-        outline: none;
-        border: 1px solid;
-        border-color: var(--primary-text);
-    }
-
-    input:focus {
-        background-color: var(--divider-text);
-        border: 2px solid;
     }
 
     .btn-container {
