@@ -96,7 +96,7 @@ input {
 }
 
 input:focus {
-    background-color: var(--divider-text);
+    background-color: var(--light-primary);
     border: 2px solid;
 }
 

@@ -7,9 +7,56 @@
         <link rel="stylesheet" href="/css/style2.css">
     </head>
     <body>
-        <header>
+        <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="upper">
+                <h1>My Diary</h1>
+                <nav>
+                    <button class="nav-item active">Dashboard</button>
+                    <button class="nav-item">Entries</button>
+                    <button class="nav-item">Account</button>
+                    <button class="nav-item">Settings</button>
+                </nav>
+            </div>
+            <div class="lower">
+                <nav>
+                    <button id="logout-btn" class="nav-item"><a href="/logout">Log Out</a></button>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="header">
+                <h2>Diary Dashboard</h2>
+                <p>Welcome back, <span id="username"><%= username %></span>!</p>
+            </div>
+
+            <!-- Today Section -->
+            <div class="today-section">
+                <div class="today-info">
+                    <div class="date-text" id="today-date">Today is <%= currentDate %></div>
+                </div>
+                <button class="add-entry-btn">Add Entry</button>
+            </div>
+
+            <div class="content-grid">
+                <!-- Recent Entries -->
+                <div class="recent-entries">
+                    <h3>Your recent entries</h3>
+                    <div id="entries-container">
+                        
+                    </div>
+                </div>
+
+                <!-- Calendar Widget -->
+            </div>
+        </div>
+    </div>
+        <!--<header>
             <div class="header-inner">
-                <p>Welcome back, <%= username %>!</p>
+                <p>Welcome back, <span id="username"><%= username %></span>!</p>
                 <a href="/logout">Log out</a>
             </div>
         </header>
@@ -26,6 +73,6 @@
 
         <div class="lower-container">
 
-        </div>
+        </div>-->
     </body>
 </html>
