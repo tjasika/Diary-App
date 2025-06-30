@@ -3,76 +3,59 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+        <title>Dashboard</title>
         <link rel="stylesheet" href="/css/style2.css">
     </head>
     <body>
         <div class="container">
         <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="upper">
-                <h1>My Diary</h1>
-                <nav>
-                    <button class="nav-item active">Dashboard</button>
-                    <button class="nav-item">Entries</button>
-                    <button class="nav-item">Account</button>
-                    <button class="nav-item">Settings</button>
-                </nav>
-            </div>
-            <div class="lower">
-                <nav>
-                    <button id="logout-btn" class="nav-item"><a href="/logout">Log Out</a></button>
-                </nav>
-            </div>
-        </div>
-
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="header">
-                <h2>Diary Dashboard</h2>
-                <p>Welcome back, <span id="username"><%= username %></span>!</p>
-            </div>
-
-            <!-- Today Section -->
-            <div class="today-section">
-                <div class="today-info">
-                    <div class="date-text" id="today-date">Today is <%= currentDate %></div>
+            <div class="sidebar">
+                <div class="upper">
+                    <h1>My Diary</h1>
+                    <nav>
+                        <button class="nav-item active">Dashboard</button>
+                        <button class="nav-item">Entries</button>
+                        <button class="nav-item">Account</button>
+                        <button class="nav-item">Settings</button>
+                    </nav>
                 </div>
-                <button class="add-entry-btn">Add Entry</button>
+                <div class="lower">
+                    <nav>
+                        <button id="logout-btn" class="nav-item"><a href="/logout">Log Out</a></button>
+                    </nav>
+                </div>
             </div>
 
-            <div class="content-grid">
-                <!-- Recent Entries -->
-                <div class="recent-entries">
-                    <h3>Your recent entries</h3>
-                    <div id="entries-container">
-                        
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="header">
+                    <h2>Diary Dashboard</h2>
+                    <p>Welcome back, <span id="username"><%= username %></span>!</p>
+                </div>
+
+                <!-- Today Section -->
+                <div class="today-section">
+                    <div class="today-info">
+                        <div class="date-text" id="today-date">Today is <%= currentDate %></div>
+                    </div>
+                    <button class="add-entry-btn">Add Entry</button>
+                </div>
+
+                <div class="content-grid">
+                    <!-- Recent Entries -->
+                    <div class="recent-entries">
+                        <h3>Your recent entries</h3>
+                        <div id="entries-container">
+                            
+                        </div>
+                    </div>
+
+                    <!-- Calendar Widget -->
+                    <div class="calendar">
+
                     </div>
                 </div>
-
-                <!-- Calendar Widget -->
             </div>
         </div>
-    </div>
-        <!--<header>
-            <div class="header-inner">
-                <p>Welcome back, <span id="username"><%= username %></span>!</p>
-                <a href="/logout">Log out</a>
-            </div>
-        </header>
-
-        <div class="upper-container">
-            <div class="date-display">
-                <p>Today is</p>
-                <p id="date"><%= currentDate %></p>
-            </div>
-            <div class="new-button">
-                <a href="/newentry">+</a>
-            </div>
-        </div>
-
-        <div class="lower-container">
-
-        </div>-->
     </body>
 </html>
