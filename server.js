@@ -57,6 +57,20 @@ app.get('/', (req, res)=>{
 	res.render("index.ejs",{err: ""});
 });
 
+app.get('/entries', (req, res)=>{
+	/*if(!req.session.username) {
+		return res.redirect('/login');
+	}*/
+	res.render("entries.ejs",{err: ""});
+});
+
+app.get('/newentry', (req, res)=>{
+	/*if(!req.session.username) {
+		return res.redirect('/login');
+	}*/
+	res.render("newentry.ejs",{err: ""});
+});
+
 app.post('/signup', (req, res)=>{
 	const data = req.body;
 	if(!data.email || !data.username || !data.password || !data.password2) {

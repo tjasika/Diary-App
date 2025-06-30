@@ -66,19 +66,16 @@ body {
     color: #333;
 }
 
-.nav-item.active {
+.nav-item:active {
     background-color: var(--light-primary);
     color: var(--dark-primary);
     border-right: 3px solid var(--primary);
 }
 
-#logout-btn {
-    background-color: var(--primary);
-}
-
-#logout-btn a {
+#logout-btn  {
     text-decoration: none;
     color: #FFFFFF;
+    background-color: var(--primary);
 }
 
         /* Main Content */
@@ -145,6 +142,7 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
+    text-decoration: none;
 }
 
 .add-entry-btn:hover {
