@@ -7,4 +7,5 @@ The *Entry* table stores the entry's title, date and content, and is connected t
 
 ### User authentification
 The user authentification was not my primary goal for this project, so I kept it simple. The email and the username must be unique, but the email is not verified (I only used the 'email' input type).
+The illustrations on the log-in and sign-up page are from *StorySet*: https://storyset.com/people
 ![Screenshot of the project interface](assets/screenshot1.png)
