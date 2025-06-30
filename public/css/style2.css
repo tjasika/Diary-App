@@ -169,14 +169,8 @@ body {
     margin-bottom: 20px;
 }
 
-.entry-item {
-    padding: 15px;
-    border-left: 4px solid #e0e0e0;
-    margin-bottom: 15px;
-    background-color: #fafafa;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
+.recent-entries h3 {
+    color: var(--primary);
 }
 
 /*New Entry*/
@@ -261,4 +255,21 @@ input[type="text"]:focus, textarea:focus {
     background-size: 500px auto;
     width: 40%;
     height: 550px;
+}
+
+/*Entries*/
+.entry {
+    width: 100%;
+    min-height: 110px;
+    max-height: 200px;
+    background-color: var(--primary-bg);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.entries-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
