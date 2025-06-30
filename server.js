@@ -168,7 +168,22 @@ app.post('/login', (req, res)=> {
 });
 
 app.post('/newentry', (req, res) => {
-
+	const {title, content} = req.body;
+	if (!content || content.trim() === '') {
+		return res.render('index.ejs', { err: 'Content cannot be empty' });
+	}
+	const userId = req.session.userId;
+	const now = new Date().toISOString().slice(0, 19).replace('T', ' ');
+	pool.query(
+		`INSERT INTO Entry (User_Id, Title, Content, Date) values (?, ?, ?, ?) `, [userId, title, content, now], (err) => {
+			if(err) {
+				console.error("Error inserting entry in the database:", err);
+				return res.render('index.ejs', {err: err.message})
+			}
+			console.log('Entry added successfully!');
+			return res.redirect('/entries');
+		}
+	);
 });
 
 //Log-out
