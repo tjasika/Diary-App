@@ -72,6 +72,10 @@ body {
     border-right: 3px solid var(--primary);
 }
 
+.icon {
+    background-image: url(/images/apps.svg);
+}
+
 #logout-btn  {
     text-decoration: none;
     color: #FFFFFF;

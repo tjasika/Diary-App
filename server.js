@@ -25,7 +25,8 @@ app.use(session({
 }));
 
 app.set("view engine", "ejs");          
-app.use(express.static('public'));     
+app.use(express.static('public'));
+app.use('/bootstrap-icons', express.static(path.join(__dirname, 'node_modules/bootstrap-icons/font')));    
 
 app.set("views", path.join(__dirname, "views"));    
 app.use(express.json());                            
