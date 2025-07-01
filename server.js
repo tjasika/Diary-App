@@ -53,14 +53,15 @@ app.get('/signup', (req, res)=>{
 });
 
 app.get('/', (req, res)=>{
-	/*if(!req.session.username) {
+	if(!req.session.username) {
 		return res.redirect('/login');
-	}*/
+	}
 	const userId = req.session.userId;
 	pool.query(
 		`SELECT entry.title, entry.date, entry.content, user.username
 		FROM entry
 		JOIN user ON entry.User_Id = user.id
+		WHERE entry.User_Id = ?
 		ORDER BY entry.date DESC
 		LIMIT 3`, 
 		[userId], (err, results) => {
@@ -74,14 +75,15 @@ app.get('/', (req, res)=>{
 });
 
 app.get('/entries', (req, res)=>{
-	/*if(!req.session.username) {
+	if(!req.session.username) {
 		return res.redirect('/login');
-	}*/
+	}
 	const userId = req.session.userId;
 	pool.query(
 		`SELECT entry.title, entry.date, entry.content, user.username
 		FROM entry
 		JOIN user ON entry.User_Id = user.id
+		WHERE entry.User_Id = ?
 		ORDER BY entry.date DESC`, 
 		[userId], (err, results) => {
 			if(err) {
@@ -94,9 +96,9 @@ app.get('/entries', (req, res)=>{
 });
 
 app.get('/newentry', (req, res)=>{
-	/*if(!req.session.username) {
+	if(!req.session.username) {
 		return res.redirect('/login');
-	}*/
+	}
 	res.render("newentry.ejs",{err: ""});
 });
 

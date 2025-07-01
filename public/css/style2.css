@@ -268,6 +268,16 @@ input[type="text"]:focus, textarea:focus {
     height: 550px;
 }
 
+.image-container.no-entry {
+    background-image: url(/images/no-entries-img.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 400px auto;
+    width: 40%;
+    height: 400px;
+}
+
 /*Entries*/
 .entry {
     width: 100%;
