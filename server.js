@@ -62,7 +62,7 @@ app.get('/', (req, res)=>{
 		FROM entry
 		JOIN user ON entry.User_Id = user.id
 		ORDER BY entry.date DESC
-		LIMIT 4`, 
+		LIMIT 3`, 
 		[userId], (err, results) => {
 			if(err) {
 				console.error('Error fetching entries:', err.message);
@@ -206,7 +206,7 @@ app.post('/newentry', (req, res) => {
 		`INSERT INTO Entry (User_Id, Title, Content, Date) values (?, ?, ?, ?) `, [userId, title, content, now], (err) => {
 			if(err) {
 				console.error("Error inserting entry in the database:", err);
-				return res.render('index.ejs', {err: err.message})
+				return res.render('index.ejs', {entries: [], err: err.message})
 			}
 			console.log('Entry added successfully!');
 			return res.redirect('/entries');

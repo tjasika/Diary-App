@@ -264,8 +264,9 @@ input[type="text"]:focus, textarea:focus {
 /*Entries*/
 .entry {
     width: 100%;
-    min-height: 110px;
-    max-height: 200px;
+    height: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     background-color: var(--primary-bg);
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     padding: 10px;
