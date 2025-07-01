@@ -13,6 +13,6 @@ The user authentification was not my primary goal for this project, so I kept it
 ![Screenshot of the project interface](assets/screenshot1.png)
 
 ### Styling
-I went with a clean, modern, and simple look. I’m not a pro designer, but I used a bit of AI to help me get a good layout and made sure the interface works well for the app. 
+I went with a clean, modern, and simple look. I’m not a pro designer, but I did my best that the interface works well for the app and used a bit of AI to help me get a good layout.
 The color palette is from *Material Palette* (https://www.materialpalette.com), the illustrations are from *StorySet* (https://storyset.com/people) , and the icons are from *Bootstrap Icons* (https://icons.getbootstrap.com/)
 
