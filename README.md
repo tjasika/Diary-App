@@ -1,5 +1,8 @@
 # Diary App 📖
 
+### File Set-Up
+
+
 ### The Database
 I created my database in MySQL Workbench. It has two tables: *User* and *Entry*.
 The *User* table stores people's email, username, password (crypted), the date when they created their account and the date when they last logged in.
