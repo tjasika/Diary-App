@@ -1,8 +1,7 @@
 # Diary App 📖
 
 ### File Set-Up
-
-
+I used pretty much the same set-up as in my 'Memory Game' project - I started by installing the necessary Node.js modules: Express, express-session, nodemon, bcrypt, mysql2, EJS, and dotenv. I used EJS as the templating engine and placed all my .ejs files in "views" folder. Static files like CSS and JavaScript are served from the "public" folder. 
 ### The Database
 I created my database in MySQL Workbench. It has two tables: *User* and *Entry*.
 The *User* table stores people's email, username, password (crypted), the date when they created their account and the date when they last logged in.
