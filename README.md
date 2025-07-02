@@ -13,5 +13,5 @@ The user authentification was not my primary goal for this project, so I kept it
 
 ### Styling
 I went with a clean, modern, and simple look. I’m not a pro designer, but I did my best that the interface works well for the app and used a bit of AI to help me get a good layout.
-The color palette is from *Material Palette* (https://www.materialpalette.com), the illustrations are from *StorySet* (https://storyset.com/people) , and the icons are from *Bootstrap Icons* (https://icons.getbootstrap.com/)
-For the layout, I initially wrote entire HTML structures for every page, using the same code over and over again - until I remembered there's a more efficient way to do it. Though it took me some time to fix the mess, I ended up creating the main layout, without writing the same code too many times.
+The color palette is from *Material Palette* (https://www.materialpalette.com), the illustrations are from *StorySet* (https://storyset.com/people) , and the icons are from *Bootstrap Icons* (https://icons.getbootstrap.com/)  
+For the layout, I initially wrote entire HTML structures for every page, using the same code over and over again - until I remembered there's a more efficient way to do it. Though it took me some time to fix the mess, I ended up creating the main layout, without writing the same code too many times. To achieve this, I used the *express-ejs-layout* module, allowing me to have the main layout in a single *main.ejs* file, in which I included the *navbar.ejs* file and the other files as the 'main content'.
