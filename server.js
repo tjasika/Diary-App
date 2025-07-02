@@ -119,7 +119,7 @@ app.get('/fullentry/:id', (req, res) => {
 				return res.status(404).send("Entry not found or access denied.");
 			}
 			console.log('Entry fetched successfully!');
-			res.render('fullentry.ejs', {entry: result[0], err: ""});
+			res.render('fullentry.ejs', {entry: result[0], err: "", activePage: 'entries'});
 		}
 	)
 });
@@ -128,7 +128,7 @@ app.get('/newentry', (req, res)=>{
 	if(!req.session.username) {
 		return res.redirect('/login');
 	}
-	res.render("newentry.ejs",{err: ""});
+	res.render("newentry.ejs",{err: "", activePage: 'entries'});
 });
 
 app.get('/account', (req, res)=>{
@@ -244,10 +244,10 @@ app.post('/newentry', (req, res) => {
 		`INSERT INTO Entry (User_Id, Title, Content, Date) values (?, ?, ?, ?) `, [userId, title, content, now], (err) => {
 			if(err) {
 				console.error("Error inserting entry in the database:", err);
-				return res.render('index.ejs', {entries: [], err: err.message})
+				return res.render('index.ejs', {entries: [], err: err.message, activePage: 'dashboard'})
 			}
 			console.log('Entry added successfully!');
-			return res.redirect('/entries');
+			return res.redirect('/entries', {err: "", activePage: 'entries'});
 		}
 	);
 });
