@@ -49,9 +49,17 @@
                             <% if (entries && entries.length > 0) { %>  <!-- Check if there are entries -->
                                 <% entries.forEach(entry => { %>
                                 <div class="entry">
-                                    <h2 class="entry-title"><%= entry.title %></h2>
-                                    <p><%= new Date(entry.date).toLocaleString() %></em></p>
-                                    <p><%= entry.content %></p>
+                                    <div class="entry-content">
+                                        <h2 class="entry-title"><%= entry.title %></h2>
+                                        <p><%= new Date(entry.date).toLocaleString() %></em></p>
+                                        <p><%= entry.content %></p>
+                                    </div>
+                                    <div class="delete-form">
+                                        <form action="/deleteentry" method="POST" onsubmit="confirmDelete(event)">
+                                            <input type="hidden" name="entryId" value="<%= entry.id %>">
+                                            <button type="submit">Delete</button>
+                                        </form>
+                                    </div>
                                 </div>
                                 <% }) %>
                             <% } else { %>

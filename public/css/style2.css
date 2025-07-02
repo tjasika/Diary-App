@@ -287,6 +287,9 @@ input[type="text"]:focus, textarea:focus {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     padding: 10px;
     border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .entries-container {
