@@ -80,7 +80,7 @@ app.get('/entries', (req, res)=>{
 	}
 	const userId = req.session.userId;
 	pool.query(
-		`SELECT entry.title, entry.date, entry.content, user.username
+		`SELECT entry.id, entry.title, entry.date, entry.content, user.username
 		FROM entry
 		JOIN user ON entry.User_Id = user.id
 		WHERE entry.User_Id = ?
@@ -101,6 +101,13 @@ app.get('/newentry', (req, res)=>{
 	}
 	res.render("newentry.ejs",{err: ""});
 });
+
+app.get('/account', (req, res)=> {
+	if(!req.session.username) {
+		return res.redirect('/login');
+	}
+	res.render("account.ejs",{err: ""});
+})
 
 
 //POST handlers
@@ -214,6 +221,25 @@ app.post('/newentry', (req, res) => {
 			return res.redirect('/entries');
 		}
 	);
+});
+
+app.post('/deleteentry', (req, res)=> {
+	const data = req.body;
+	const entryId = req.body.entryId;
+	const userId = req.session.userId;
+	pool.query(
+		`DELETE FROM Entry 
+		WHERE Id = ?
+		AND User_Id = ?`,
+		[entryId, userId], (err, result) => {
+			if(err) {
+				console.error('Error deleting entry:', err.message);
+				return res.redirect('/entries');
+			}
+			console.log('Entry deleted successfully!');
+			return res.redirect('/entries');
+		}
+	)
 });
 
 //Log-out
