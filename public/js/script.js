@@ -3,3 +3,9 @@ confirmDelete = (event) => {
         event.preventDefault();
     }
 }
+
+confirmPost = (event) => {
+    if (!window.confirm("Add to entries?")) {
+        event.preventDefault();
+    }
+}

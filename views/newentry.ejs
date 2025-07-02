@@ -30,7 +30,7 @@
             <div class="main-content new-entry">
                 <div class="form-container">
                     <h2>Add a new entry</h2>
-                    <form id="new-entry-form" action="/newentry" method="POST">
+                    <form id="new-entry-form" action="/newentry" method="POST" onsubmit="confirmPost(event)">
                         <label for="entry-title">Add a title:</label>
                         <input type="text" id="entry-title" name="title" required>
 
@@ -46,5 +46,6 @@
                 <div class="image-container"></div>
             </div>
         </div>
+        <script src="/js/script.js"></script>
     </body>
 </html>

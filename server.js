@@ -58,7 +58,7 @@ app.get('/', (req, res)=>{
 	}
 	const userId = req.session.userId;
 	pool.query(
-		`SELECT entry.title, entry.date, entry.content, user.username
+		`SELECT entry.id, entry.title, entry.date, entry.content, user.username
 		FROM entry
 		JOIN user ON entry.User_Id = user.id
 		WHERE entry.User_Id = ?
