@@ -9,3 +9,9 @@ confirmPost = (event) => {
         event.preventDefault();
     }
 }
+
+confirmLogout = (event) => {
+    if (!window.confirm("Log out?")) {
+        event.preventDefault();
+    }
+}

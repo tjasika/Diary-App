@@ -6,6 +6,7 @@ const session = require('express-session');
 const mysql = require('mysql2');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const expressLayout = require('express-ejs-layouts');
 
 const { format } = require('date-fns');
 
@@ -26,6 +27,8 @@ app.use(session({
 
 app.set("view engine", "ejs");          
 app.use(express.static('public'));
+app.use(expressLayout);
+app.set('layout', './layouts/main');
 app.use('/bootstrap-icons', express.static(path.join(__dirname, 'node_modules/bootstrap-icons/font')));    
 
 app.set("views", path.join(__dirname, "views"));    
@@ -45,11 +48,11 @@ app.use((req, res, next) => {
 
 //GET handlers
 app.get('/login', (req, res)=>{
-	res.render("login.ejs", {err: ""});
+	res.render("login.ejs", {err: "", layout: false});
 });
 
 app.get('/signup', (req, res)=>{
-	res.render("signup.ejs", {err: ""});
+	res.render("signup.ejs", {err: "", layout: false});
 });
 
 app.get('/', (req, res)=>{
