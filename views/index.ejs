@@ -55,9 +55,9 @@
                                         <p><%= entry.content %></p>
                                     </div>
                                     <div class="delete-form">
-                                        <form action="/deleteentry" method="POST" onsubmit="confirmDelete(event)">
+                                        <form action="/delete-entry" method="POST" onsubmit="confirmDelete(event)">
                                             <input type="hidden" name="entryId" value="<%= entry.id %>">
-                                            <button type="submit">Delete</button>
+                                            <button type="submit"><i class="bi bi-trash3"></i></button>
                                         </form>
                                     </div>
                                 </div>
@@ -76,5 +76,6 @@
                 </div>
             </div>
         </div>
+        <script src="/js/script.js"></script>
     </body>
 </html>

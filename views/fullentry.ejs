@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Entries</title>
+        <link rel="stylesheet" href="/css/style2.css">
+        <link rel="stylesheet" href="/bootstrap-icons/bootstrap-icons.css">
+    </head>
+    <body>
+        <div class="container">
+        <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="upper">
+                    <h1>My Diary</h1>
+                    <nav>
+                        <a href="/" class="nav-item"><i class="bi bi-grid-1x2"></i>  Dashboard</a>
+                        <a href="/entries" class="nav-item active"><i class="bi bi-journals"></i>  Entries</a>
+                        <a href="/account" class="nav-item"><i class="bi bi-person"></i>  Account</a>
+                    </nav>
+                </div>
+                <div class="lower">
+                    <nav>
+                        <a href="/logout" id="logout-btn" class="nav-item">Log Out</a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="main-content">
+                <h2><%= entry.title %></h2>
+                <p><%= new Date(entry.date).toLocaleString() %></p>
+                <p><%= entry.content %></p>
+                <a href="/entries">Back to all entries</a>
+            </div>
+        </div>
+        <script src="/js/script.js"></script>
+    </body>
+</html>

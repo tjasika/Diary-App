@@ -38,11 +38,12 @@
                             <p><%= new Date(entry.date).toLocaleString() %></em></p>
                             <p><%= entry.content %></p>
                         </div>
-                        <div class="delete-form">
-                            <form action="/deleteentry" method="POST" onsubmit="confirmDelete(event)">
+                        <div class="forms">
+                            <form action="/delete-entry" method="POST" onsubmit="confirmDelete(event)">
                                 <input type="hidden" name="entryId" value="<%= entry.id %>">
-                                <button type="submit">Delete</button>
+                                <button type="submit"><i class="bi bi-trash3"></i></button>
                             </form>
+                            <a href="/fullentry/<%= entry.id %>">View Full Entry</a>
                         </div>
                     </div>
                     <% }) %>

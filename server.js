@@ -95,6 +95,32 @@ app.get('/entries', (req, res)=>{
 	)
 });
 
+app.get('/fullentry/:id', (req, res) => {
+	if(!req.session.username) {
+		return res.redirect('/login');
+	}
+	const userId = req.session.userId;
+	const entryId = req.params.id;
+	pool.query(
+		`SELECT entry.id, entry.title, entry.date, entry.content
+		FROM entry
+		JOIN user ON entry.User_Id = user.id
+		WHERE entry.User_Id = ?
+		AND entry.id = ?`,
+		[userId, entryId], (err, result) => {
+			if(err) {
+				console.error('Error fetching entry:', err.message);
+				return res.redirect('/entries');
+			}
+			if (result.length === 0) {
+				return res.status(404).send("Entry not found or access denied.");
+			}
+			console.log('Entry fetched successfully!');
+			res.render('fullentry.ejs', {entry: result[0], err: ""});
+		}
+	)
+});
+
 app.get('/newentry', (req, res)=>{
 	if(!req.session.username) {
 		return res.redirect('/login');
@@ -223,7 +249,7 @@ app.post('/newentry', (req, res) => {
 	);
 });
 
-app.post('/deleteentry', (req, res)=> {
+app.post('/delete-entry', (req, res)=> {
 	const data = req.body;
 	const entryId = req.body.entryId;
 	const userId = req.session.userId;
