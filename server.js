@@ -70,9 +70,9 @@ app.get('/', (req, res)=>{
 		[userId], (err, results) => {
 			if(err) {
 				console.error('Error fetching entries:', err.message);
-				return res.render('index.ejs', { entries: [], err: err.message });
+				return res.render('index.ejs', { entries: [], err: err.message,activePage: 'dashboard' });
 			}
-			return res.render('index.ejs',{entries: results, err: ""});
+			return res.render('index.ejs',{entries: results, err: "", activePage: 'dashboard'});
 		}
 	)
 });
@@ -91,9 +91,9 @@ app.get('/entries', (req, res)=>{
 		[userId], (err, results) => {
 			if(err) {
 				console.error('Error fetching entries:', err.message);
-				return res.render('entries.ejs', { entries: [], err: err.message });
+				return res.render('entries.ejs', { entries: [], err: err.message, activePage: 'entries' });
 			}
-			return res.render('entries.ejs',{entries: results, err: ""});
+			return res.render('entries.ejs',{entries: results, err: "", activePage: 'entries'});
 		}
 	)
 });
@@ -131,12 +131,12 @@ app.get('/newentry', (req, res)=>{
 	res.render("newentry.ejs",{err: ""});
 });
 
-app.get('/account', (req, res)=> {
+app.get('/account', (req, res)=>{
 	if(!req.session.username) {
 		return res.redirect('/login');
 	}
-	res.render("account.ejs",{err: ""});
-})
+	res.render('account.ejs', {err: "", activePage:'account'});
+});
 
 
 //POST handlers
