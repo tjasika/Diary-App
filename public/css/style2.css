@@ -305,12 +305,13 @@ html, body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
 .entries-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
 }
 
 .entry.add {
@@ -323,7 +324,7 @@ html, body {
     cursor: pointer;
 }
 
-.entry.add:hover {
+.entry.add:hover, .entry:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 15px var(--light-primary); 
     filter: brightness(1.1); 
