@@ -4,7 +4,7 @@
         <p><%= new Date(entry.date).toLocaleDateString() %></p>
         <p><%= entry.content %></p>
         <% if (image) { %>
-            <img src="data:image/jpeg;base64,<%= image %>" alt="Entry Image" style="max-width: 100%; border-radius: 10px;" />
+            <img src="data:image/jpeg;base64,<%= image %>" alt="Entry Image" style="max-width: 50%; border-radius: 10px;" />
         <% } %>
     </div>
     <div class="buttons-container">
