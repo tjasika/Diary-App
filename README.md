@@ -16,7 +16,7 @@ For the layout, I initially wrote entire HTML structures for every page, using t
 ![Screenshot of the project interface](assets/screenshot3.png)
 
 ### User authentification
-The user authentification was not my primary goal for this project, so I kept it simple. The email and the username must be unique, but the email is not verified (I only used the 'email' input type).  
+The user authentification was not my primary goal for this project, so I kept it simple. The email and the username must be unique, but the email is not verified (I only used the 'email' input type).
 ![Screenshot of the project interface](assets/screenshot1.png)
 
 ### The app logic
@@ -27,7 +27,10 @@ Clicking the "Add Entry" button takes them to a form where they can:
 - Write the content of their entry
     
 After submitting, the user is redirected to a page showing all their entries. Each entry can be clicked to view its full content, and users have the option to delete any entry. Before submitting or deleting, a confirmation modal ensures the user truly wants to proceed.
+#### So how does it work?
+Each page has its own .ejs file, which is served to the user via a GET route. They all fetch data from the database via a simple SELECT query, pass it to the .ejs file, which then displays it.  
+![Screenshot of the project interface](assets/screenshot5.png)   
+The data is manipulated via the POST routes: the */newentry* route inserts the necessary data (User ID, entry title, content and date) into the *entry* table. The user is not required to select a date in the form - if none is selected, the today's date is set automatically. The */delete-entry* route deletes an entry from the database, which cannot be undone.
 ![Screenshot of the project interface](assets/screenshot6.png)
-#### So how does that work?
-![Screenshot of the project interface](assets/screenshot5.png) 
+
 ![Screenshot of the project interface](assets/screenshot4.png)
