@@ -1,7 +1,14 @@
-<h2>Hello, <%= username %>!</h2>
 
-<p>You created your account on: <%= new Date(user.first_used).toLocaleString() %></p>
-<p>Your last login: <%= new Date(user.last_used).toLocaleString() %></p>
-<p>Your email: <%= user.email %></p>
-
-<p>Delete account?</p>
+<div class="account-container">
+    <h2>Your account</h2>
+    <div class="login-info">
+        <p>Username: <span class="info"><%= username %></span></p>
+        <p>Email: <span class="info"><%= user.email %></span></p>
+        <p>Change password?</p>
+    </div>
+    <div class="dates-info">
+        <p>You created your account on: <%= new Date(user.first_used).toLocaleString() %></p>
+        <p>Your last login: <%= new Date(user.last_used).toLocaleString() %></p>
+    </div>
+    <p>Delete account?</p>
+</div>

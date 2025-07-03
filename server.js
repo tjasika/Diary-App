@@ -9,6 +9,9 @@ const bcrypt = require('bcrypt');
 const expressLayout = require('express-ejs-layouts');
 
 const { format } = require('date-fns');
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
 
 const pool = mysql.createPool({
     user: process.env.DB_USER,
@@ -105,7 +108,7 @@ app.get('/fullentry/:id', (req, res) => {
 	const userId = req.session.userId;
 	const entryId = req.params.id;
 	pool.query(
-		`SELECT entry.id, entry.title, entry.date, entry.content
+		`SELECT entry.id, entry.title, entry.date, entry.content, entry.picture
 		FROM entry
 		JOIN user ON entry.User_Id = user.id
 		WHERE entry.User_Id = ?
@@ -118,8 +121,14 @@ app.get('/fullentry/:id', (req, res) => {
 			if (result.length === 0) {
 				return res.status(404).send("Entry not found or access denied.");
 			}
+			const imageBuffer = result[0].picture; // assuming 'picture' is the column name
+			let base64Image = null;
+
+			if (imageBuffer) {
+				base64Image = Buffer.from(imageBuffer).toString('base64');
+			}
 			console.log('Entry fetched successfully!');
-			res.render('fullentry.ejs', {entry: result[0], err: "", activePage: 'entries'});
+			res.render('fullentry.ejs', {entry: result[0], image: base64Image, err: "", activePage: 'entries'});
 		}
 	)
 });
@@ -250,7 +259,7 @@ app.post('/login', (req, res)=> {
 	);
 });
 
-app.post('/newentry', (req, res) => {
+app.post('/newentry', upload.single('picture'), (req, res) => {
 	const {date, title, content} = req.body;
 	if (!content || content.trim() === '') {
 		return res.render('index.ejs', { err: 'Content cannot be empty' });
@@ -258,8 +267,10 @@ app.post('/newentry', (req, res) => {
 	const userId = req.session.userId;
 	const today = new Date().toISOString().slice(0, 10);
 	const entryDate = date || today;
+	const image = req.file ? req.file.buffer : null;
+
 	pool.query(
-		`INSERT INTO Entry (User_Id, Title, Content, Date) values (?, ?, ?, ?) `, [userId, title, content, entryDate], (err) => {
+		`INSERT INTO Entry (User_Id, Title, Content, Date, picture) values (?, ?, ?, ?, ?) `, [userId, title, content, entryDate, image], (err) => {
 			if(err) {
 				console.error("Error inserting entry in the database:", err);
 				return res.render('index.ejs', {entries: [], err: err.message, activePage: 'dashboard'})

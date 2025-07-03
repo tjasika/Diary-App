@@ -1,7 +1,7 @@
 <div class="main-content new-entry">
     <div class="form-container">
         <h2>Add a new entry</h2>
-        <form id="new-entry-form" action="/newentry" method="POST" onsubmit="confirmPost(event)">
+        <form id="new-entry-form" action="/newentry" method="POST" onsubmit="confirmPost(event)" enctype="multipart/form-data">
             <div class="date-title-container">
                 <label for="date-input">Select a date:</label>
                 <input type="date" name="date" class="styled-input">
@@ -24,6 +24,9 @@
 
             <label for="entry-content" >What are you thinking about?</label>
             <textarea id="entry-content" name="content" required></textarea>
+
+            <label for="picture">Add a photo (optional):</label>
+            <input type="file" name="picture" accept="image/*" id="picture-input">
 
             <div class="button-container">
                 <button type="submit" id="add-btn">Add</button>
