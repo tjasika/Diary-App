@@ -312,3 +312,19 @@ html, body {
     flex-direction: column;
     gap: 10px;
 }
+
+.entry.add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: var(--divider-text);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+}
+
+.entry.add:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px var(--light-primary); 
+    filter: brightness(1.1); 
+}
