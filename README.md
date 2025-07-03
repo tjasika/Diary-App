@@ -34,3 +34,6 @@ The data is manipulated via the POST routes: the */newentry* route inserts the n
 ![Screenshot of the project interface](assets/screenshot6.png)
 The */fullentry/:id* route, If not, they are redirected to the login page. If authenticated, the app retrieves the entry with the given ID from the database, ensuring it belongs to the currently logged-in user. This check protects against unauthorized access to other users’ entries. If the entry exists and is accessible, its full details (title, date, and content) are rendered on a dedicated page. If the entry doesn't exist or an error occurs during the query, the user is either shown an appropriate error or redirected back to the entries page.
 ![Screenshot of the project interface](assets/screenshot4.png)
+
+### Possible improvements
+
