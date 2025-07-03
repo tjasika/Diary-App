@@ -37,6 +37,9 @@ The */newentry* route displays the form to add a new entry, while the /account r
 ![Screenshot of the project interface](assets/screenshot6.png)
 Data manipulation is handled through the POST routes. The /newentry route accepts form data to insert a new entry into the database, including the user ID, title, content, and date. If the user does not specify a date, the current date is automatically assigned. The route also validates that the content is not empty before saving. The /delete-entry route allows users to delete an entry by its ID, ensuring the entry belongs to the logged-in user. Once deleted, this action cannot be undone. Both routes handle errors gracefully and redirect the user appropriately upon success or failure.
 
+### Later changes
+I decided to add the option for the user to upload a photo, with a *file* input type. Because the images are saved to the database as a *longblob* datatype, I had to use binary data manipulation, for which I used the help of ChatGPT.
+
 ### Possible improvements
 - [ ] Responsive design
 - [ ] Filtering entries (e.g. by date)
