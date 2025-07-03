@@ -19,16 +19,15 @@
         <div class="entries-container">
             <% if (entries && entries.length > 0) { %>  <!-- Check if there are entries -->
                 <% entries.forEach(entry => { %>
-                <div class="entry">
-                    <div class="entry-content">
-                        <h2 class="entry-title"><%= entry.title %></h2>
-                        <p><%= new Date(entry.date).toLocaleDateString() %></em></p>
-                        <p><%= entry.content %></p>
-                    </div>
-                    <div class="forms">
-                        <a href="/fullentry/<%= entry.id %>">View Full Entry</a>
-                    </div>
-                </div>
+                    <a href="/fullentry/<%= entry.id %>" style="text-decoration: none; color: inherit;">
+                        <div class="entry">
+                            <div class="entry-content">
+                                <h2 class="entry-title"><%= entry.title %></h2>
+                                <p><%= new Date(entry.date).toLocaleDateString() %></em></p>
+                                <p><%= entry.content %></p>
+                            </div>
+                        </div>
+                    </a>
                 <% }) %>
             <% } else { %>
                 <div class="image-container no-entry"></div>
@@ -38,7 +37,7 @@
     </div>
 
     <!-- Calendar Widget -->
-    <div class="calendar">
-
+    <div class="image">
+        
     </div>
 </div>

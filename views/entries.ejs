@@ -2,7 +2,7 @@
 <div class="entries-container">
     <a href="/newentry" style="text-decoration: none; color: inherit;">
         <div class="entry add">
-            <i class="bi bi-plus-square"></i>
+            <i class="bi bi-plus"></i>
         </div>
     </a>
     
@@ -19,7 +19,7 @@
                 <div class="forms">
                     <form action="/delete-entry" method="POST" onsubmit="confirmDelete(event)">
                         <input type="hidden" name="entryId" value="<%= entry.id %>">
-                        <button type="submit"><i class="bi bi-trash3"></i></button>
+                        <button type="submit" id="delete-btn"><i class="bi bi-trash3"></i></button>
                     </form>
                 </div>
             </div>

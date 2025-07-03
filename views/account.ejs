@@ -1,1 +1,7 @@
-<h1>Hello World</h1>
+<h2>Hello, <%= username %>!</h2>
+
+<p>You created your account on: <%= new Date(user.first_used).toLocaleString() %></p>
+<p>Your last login: <%= new Date(user.last_used).toLocaleString() %></p>
+<p>Your email: <%= user.email %></p>
+
+<p>Delete account?</p>

@@ -135,7 +135,24 @@ app.get('/account', (req, res)=>{
 	if(!req.session.username) {
 		return res.redirect('/login');
 	}
-	res.render('account.ejs', {err: "", activePage:'account'});
+	const userId = req.session.userId;
+	pool.query(
+		`SELECT email, username, first_used, last_used
+		FROM user
+		WHERE Id = ?`, 
+		[userId], (err, results) => {
+			if(err) {
+				console.error('Error:', err.message);
+				res.redirect('/');
+			}
+			const user = results[0];
+			if (!user) {
+				return res.render('account.ejs', { err: 'User not found.', activePage: 'account' });
+			}
+			res.render('account.ejs', {err: "", activePage:'account', user});
+		} 	
+	);
+	
 });
 
 
