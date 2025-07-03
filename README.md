@@ -28,9 +28,9 @@ Clicking the "Add Entry" button takes them to a form where they can:
     
 After submitting, the user is redirected to a page showing all their entries. Each entry can be clicked to view its full content, and users have the option to delete any entry. Before submitting or deleting, a confirmation modal ensures the user truly wants to proceed.
 #### So how does it work?
-Each page has its own .ejs file, which is served to the user via a GET route. They all fetch data from the database via a simple SELECT query, pass it to the .ejs file, which then displays it.  
+Each page has its own .ejs file, which is served to the user via a GET route. They all fetch data from the database via a simple SELECT query, pass it to the .ejs file, which then displays it. They all first check if the user is logged in - if not, they are redirected to the login page.  
 ![Screenshot of the project interface](assets/screenshot5.png)   
 The data is manipulated via the POST routes: the */newentry* route inserts the necessary data (User ID, entry title, content and date) into the *entry* table. The user is not required to select a date in the form - if none is selected, the today's date is set automatically. The */delete-entry* route deletes an entry from the database, which cannot be undone.
 ![Screenshot of the project interface](assets/screenshot6.png)
-
+The */fullentry/:id* route, If not, they are redirected to the login page. If authenticated, the app retrieves the entry with the given ID from the database, ensuring it belongs to the currently logged-in user. This check protects against unauthorized access to other users’ entries. If the entry exists and is accessible, its full details (title, date, and content) are rendered on a dedicated page. If the entry doesn't exist or an error occurs during the query, the user is either shown an appropriate error or redirected back to the entries page.
 ![Screenshot of the project interface](assets/screenshot4.png)
