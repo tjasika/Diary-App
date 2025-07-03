@@ -17,6 +17,12 @@
     <div class="recent-entries">
         <h3>Your recent entries</h3>
         <div class="entries-container">
+            <a href="/newentry" style="text-decoration: none; color: inherit;">
+                <div class="entry add">
+                    <i class="bi bi-plus"></i>
+                </div>
+            </a>
+            
             <% if (entries && entries.length > 0) { %>  <!-- Check if there are entries -->
                 <% entries.forEach(entry => { %>
                     <a href="/fullentry/<%= entry.id %>" style="text-decoration: none; color: inherit;">
@@ -30,7 +36,6 @@
                     </a>
                 <% }) %>
             <% } else { %>
-                <div class="image-container no-entry"></div>
                 <p>Looks like there are no entries here!</p>
             <% } %>
         </div>
@@ -38,6 +43,6 @@
 
     <!-- Calendar Widget -->
     <div class="image">
-        
+
     </div>
 </div>
