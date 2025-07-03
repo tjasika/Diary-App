@@ -44,3 +44,4 @@ I decided to add the option for the user to upload a photo, with a *file* input 
 - [ ] Responsive design
 - [ ] Filtering entries (e.g. by date)
 - [ ] A functional calendar
+- [ ] Optional editing of the entries
