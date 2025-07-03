@@ -24,7 +24,8 @@ Upon logging in, users are greeted with a personalized dashboard displaying a we
 Clicking the "Add Entry" button takes them to a form where they can:
 - Enter a custom title or select from a list of prompt suggestions
 - Choose a date for the entry (defaults to today if left empty)
-- Write the content of their entry  
+- Write the content of their entry
+    
 After submitting, the user is redirected to a page showing all their entries. Each entry can be clicked to view its full content, and users have the option to delete any entry. Before submitting or deleting, a confirmation modal ensures the user truly wants to proceed.
 ![Screenshot of the project interface](assets/screenshot6.png)
 #### So how does that work?
