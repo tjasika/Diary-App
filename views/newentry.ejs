@@ -1,51 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>New Entry</title>
-        <link rel="stylesheet" href="/css/style2.css">
-    </head>
-    <body class="form-body">
-        <div class="container">
-        <!-- Sidebar -->
-            <div class="sidebar">
-                <div class="upper">
-                    <h1>My Diary</h1>
-                    <nav>
-                        <a href="/" class="nav-item">Dashboard</a>
-                        <a href="/entries" class="nav-item">Entries</a>
-                        <a href="/account" class="nav-item">Account</a>
-                        <a href="/settings" class="nav-item">Settings</a>
-                    </nav>
-                </div>
-                <div class="lower">
-                    <nav>
-                        <a href="/logout" id="logout-btn" class="nav-item" onclick="confirmLogout(event)">Log Out</a>
-                    </nav>
-                </div>
+<div class="main-content new-entry">
+    <div class="form-container">
+        <h2>Add a new entry</h2>
+        <form id="new-entry-form" action="/newentry" method="POST" onsubmit="confirmPost(event)">
+            <div class="date-title-container">
+                <label for="date-input">Select a date:</label>
+                <input type="date" name="date" class="styled-input">
+
+                <label for="entry-title">Add a title:</label>
+                <input list="prompts"  name="title" class="styled-input" required>
+                    <datalist id="prompts">
+                        <option value="A moment I want to remember"></option>
+                        <option value="How my day went"></option>
+                        <option value="Right now I feel..."></option>
+                        <option value="What I'm working on"></option>
+                        <option value="Something I'm proud of"></option>
+                        <option value="A risk I want to take"></option>
+                        <option value="Things I'm grateful for"></option>
+                        <option value="A letter to my past self"></option>
+                        <option value="A conversation I won't forget"></option>
+                        <option value="What inspired me today"></option>
+                    </datalist>
             </div>
 
-            <!-- Main Content -->
-            <div class="main-content new-entry">
-                <div class="form-container">
-                    <h2>Add a new entry</h2>
-                    <form id="new-entry-form" action="/newentry" method="POST" onsubmit="confirmPost(event)">
-                        <label for="entry-title">Add a title:</label>
-                        <input type="text" id="entry-title" name="title" required>
+            <label for="entry-content" >What are you thinking about?</label>
+            <textarea id="entry-content" name="content" required></textarea>
 
-                        <label for="entry-content" >What are you thinking about?</label>
-                        <textarea id="entry-content" name="content" required></textarea>
-
-                        <div class="button-container">
-                            <button type="submit" id="add-btn">Add</button>
-                        </div>
-                    </form>
-                </div>
-                
-                <div class="image-container"></div>
+            <div class="button-container">
+                <button type="submit" id="add-btn">Add</button>
             </div>
-        </div>
-        <script src="/js/script.js"></script>
-    </body>
-</html>
+        </form>
+    </div>
+    
+    <div class="image-container"></div>
+</div>
