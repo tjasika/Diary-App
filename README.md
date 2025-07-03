@@ -37,4 +37,6 @@ The */fullentry/:id* route displays an entry in its entirety. If authenticated, 
 ![Screenshot of the project interface](assets/screenshot4.png)
 
 ### Possible improvements
-
+- [ ] Responsive design
+- [ ] Filtering entries (e.g. by date)
+- [ ] A functional calendar
