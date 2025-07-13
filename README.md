@@ -1,5 +1,5 @@
 # Diary App 📖
-My Diary App lets users securely write, view, and manage daily journal entries. After logging in, users see their recent entries and can add new ones by choosing a title, date, and content. Entries are saved by date and can be viewed or deleted anytime. The app includes confirmation prompts to prevent accidental changes, making it a simple and safe way to keep a personal journal.
+My Diary App lets users securely write, view, and manage daily journal entries. After logging in, users see their recent entries and can add new ones by choosing a title, date, and content. Entries are saved by date and can be viewed or deleted anytime. The app includes confirmation prompts to prevent accidental changes, making it a simple and safe way to keep a personal journal. Of course, given my current set of skills, this app is more of a mock-up.
 
 ### File Set-Up
 I used pretty much the same set-up as in my 'Memory Game' project - I started by installing the necessary Node.js modules: Express, express-session, nodemon, bcrypt, mysql2, EJS, and dotenv. I used EJS as the templating engine and placed all my .ejs files in "views" folder. Static files like CSS and JavaScript are served from the "public" folder. 
